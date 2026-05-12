@@ -1,3 +1,16 @@
 .DS_Store
 .vercel
 node_modules
+
+# MOM (generated at runtime)
+.mom/
+.mcp.json
+.claude/
+CLAUDE.md
+.windsurf/
+AGENTS.md
+.codex/
+.clinerules/
+
+# Local prototypes, not deployed
+/docs/prototypes/

@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/import.html",
+      "destination": "/bring-your-program.html",
+      "permanent": true
+    },
+    {
+      "source": "/import",
+      "destination": "/bring-your-program.html",
+      "permanent": true
+    }
+  ]
+}

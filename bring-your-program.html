@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Import a workout program · Logbook Notation reference</title>
+<meta name="description" content="Import any strength training program into Logbook: paste a PDF, dictate it, or write it in Logbook Notation. A compact syntax for sets, reps, RPE, percent of 1RM, and per-week prescriptions.">
+<meta name="keywords" content="workout program importer, import training program, Logbook Notation, strength training syntax, RPE notation, percent 1RM, weekly periodization, powerlifting program app, import PDF workout, training notation, workout log iPhone">
+<link rel="canonical" href="https://uselogbook.app/bring-your-program.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Import a workout program · Logbook Notation reference">
+<meta property="og:description" content="Paste a PDF, dictate the block, or write it in Logbook Notation. A compact, workout-first syntax for sets, reps, RPE, percent of 1RM, and per-week prescriptions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://uselogbook.app/bring-your-program.html">
+<meta property="og:image" content="https://uselogbook.app/screenshots/01-today.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Import a workout program · Logbook Notation reference">
+<meta name="twitter:description" content="Paste a PDF, dictate the block, or write it in Logbook Notation. A compact syntax for sets, reps, RPE, and per-week prescriptions.">
+<meta name="twitter:image" content="https://uselogbook.app/screenshots/01-today.png">
+
+<!-- Structured Data · TechArticle for LLM and search comprehension -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Import a workout program · Logbook Notation reference",
+  "description": "How the Logbook importer reads any strength training program, and the full Logbook Notation syntax for sets, reps, RPE, percent of 1RM, and per-week prescriptions.",
+  "url": "https://uselogbook.app/bring-your-program.html",
+  "inLanguage": "en",
+  "about": [
+    {"@type": "Thing", "name": "Workout program importer"},
+    {"@type": "Thing", "name": "Logbook Notation"},
+    {"@type": "Thing", "name": "Strength training periodization"}
+  ],
+  "isPartOf": {
+    "@type": "MobileApplication",
+    "name": "Logbook: Strength Training Log",
+    "operatingSystem": "iOS",
+    "applicationCategory": "HealthApplication",
+    "url": "https://apps.apple.com/br/app/logbook-strength-training-log/id6761714460"
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #F4EDE0;
+    --surface: #EAE2D4;
+    --divider: #D0C8B8;
+    --ink: #2A2520;
+    --ink2: #8A8070;
+    --ink3: #B5A998;
+    --ribbon: #C4453C;
+  }
+
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Prototype variant strip */
+  .variant-strip { background: var(--surface); border-bottom: 1px solid var(--divider); padding: 10px 0; }
+  .variant-strip .inner { display: flex; gap: 16px; align-items: center; font-size: 13px; color: var(--ink2); }
+  .variant-strip a { color: var(--ink2); text-decoration: none; padding: 4px 10px; border-radius: 4px; }
+  .variant-strip a.on { background: var(--ink); color: var(--bg); }
+  .variant-strip .tag { font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em; color: var(--ink3); margin-right: 8px; }
+
+  /* Top nav */
+  .topbar { border-bottom: 1px solid var(--divider); padding: 22px 0; }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; }
+  .wordmark { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
+  .wordmark .ribbon { display: inline-block; width: 6px; height: 16px; background: var(--ribbon); margin-left: 4px; vertical-align: -2px; clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%); }
+  .crumbs { font-size: 13px; color: var(--ink2); }
+  .crumbs a { color: var(--ink2); text-decoration: none; }
+  .crumbs a:hover { color: var(--ink); }
+  .topnav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+  .topnav a { color: var(--ink2); text-decoration: none; transition: color 0.15s; }
+  .topnav a:hover { color: var(--ink); }
+  .topnav a.current { color: var(--ink); }
+  .topnav .cta-sm { background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 8px; font-weight: 500; font-size: 13px; }
+  .topnav .cta-sm:hover { color: var(--bg); opacity: 0.85; }
+  @media (max-width: 640px) { .topnav { gap: 16px; font-size: 13px; } .topnav .nav-secondary { display: none; } }
+
+  /* Hero · left aligned, single column */
+  .hero { padding: 80px 0 48px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 64px;
+    align-items: end;
+  }
+  .label { font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink3); }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 5.5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 16px 0 20px;
+  }
+  .hero .dek { font-size: 18px; color: var(--ink2); max-width: 50ch; }
+  .hero-meta {
+    font-family: 'DM Sans';
+    font-size: 13px;
+    color: var(--ink2);
+    border-left: 1px solid var(--divider);
+    padding-left: 20px;
+  }
+  .hero-meta dt { font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink3); margin-top: 12px; }
+  .hero-meta dt:first-child { margin-top: 0; }
+  .hero-meta dd { color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+
+  /* Main two-column layout */
+  .doc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 64px;
+    padding: 56px 0 96px;
+    border-top: 1px solid var(--divider);
+  }
+
+  .content section { padding-bottom: 48px; border-bottom: 1px solid var(--divider); margin-bottom: 48px; }
+  .content section:last-child { border-bottom: none; }
+  .content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 28px 0 8px;
+  }
+  .content p { margin-bottom: 16px; max-width: 62ch; }
+  .content p.muted { color: var(--ink2); }
+  .content p.lead { font-size: 18px; }
+
+  .anchor { display: block; height: 0; transform: translateY(-24px); }
+
+  code {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.92em;
+    color: var(--ink);
+  }
+
+  /* Warning callout · ribbon left-border, italic display */
+  .pull {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--ink);
+    padding: 4px 0 4px 22px;
+    border-left: 3px solid var(--ribbon);
+    margin: 28px 0;
+    max-width: 56ch;
+  }
+  @media (max-width: 600px) { .pull { font-size: 20px; } }
+
+  /* Mini definition rows */
+  .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 14px 24px;
+    padding: 14px 0;
+    border-top: 1px solid var(--divider);
+  }
+  .row:last-of-type { border-bottom: 1px solid var(--divider); }
+  .row dt { font-weight: 500; }
+  .row dt code { background: transparent; border: none; padding: 0; font-size: 1em; }
+  .row dd { color: var(--ink2); line-height: 1.55; }
+
+  /* Two paths chips */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .path {
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 22px 22px;
+  }
+  .path .label { display: block; margin-bottom: 8px; }
+  .path h3 { margin: 0 0 8px; font-size: 18px; }
+  .path p { margin: 0; font-size: 14px; color: var(--ink2); }
+
+  /* Sticky cheat sheet */
+  aside.cheat {
+    position: sticky;
+    top: 28px;
+    align-self: start;
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 24px;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  aside.cheat h3 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin: 0 0 14px;
+  }
+  aside.cheat .sample {
+    white-space: pre;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    overflow-x: auto;
+  }
+  aside.cheat .sample .c-key { color: var(--ink2); font-weight: 500; }
+  aside.cheat .sample .c-section { font-weight: 600; }
+  aside.cheat .sample .c-note { color: var(--ink2); font-style: italic; font-family: 'DM Serif Display', serif; }
+  aside.cheat .sample .c-week { color: var(--ribbon); font-weight: 500; }
+  aside.cheat .sample .c-rule { color: var(--ink3); }
+  aside.cheat .legend { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--divider); font-size: 12px; color: var(--ink2); line-height: 1.7; }
+  aside.cheat .legend .swatch { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+
+  /* On-page navigation */
+  .pagenav { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--divider); }
+  .pagenav .navhead {
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-family: 'DM Sans'; font-style: normal; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 14px;
+  }
+  .pagenav .navhead .count { color: var(--ink3); font-variant-numeric: tabular-nums; }
+  .pagenav ol { list-style: none; counter-reset: nav; margin: 0; padding: 0; }
+  .pagenav ol li { counter-increment: nav; }
+  .pagenav ol li a {
+    display: grid;
+    grid-template-columns: 28px 1fr 14px;
+    align-items: baseline;
+    gap: 8px;
+    padding: 9px 0;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    border-top: 1px solid var(--divider);
+    transition: color .12s;
+  }
+  .pagenav ol li:first-child a { border-top: none; }
+  .pagenav ol li a::before {
+    content: counter(nav, decimal-leading-zero);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+    color: var(--ink3);
+    font-weight: 500;
+  }
+  .pagenav ol li a::after {
+    content: "→";
+    color: var(--ink3);
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity .12s, transform .12s;
+    justify-self: end;
+  }
+  .pagenav ol li a:hover { color: var(--ribbon); }
+  .pagenav ol li a:hover::before { color: var(--ribbon); }
+  .pagenav ol li a:hover::after { opacity: 1; transform: translateX(2px); color: var(--ribbon); }
+  .pagenav ol li a.active { color: var(--ribbon); }
+  .pagenav ol li a.active::before { color: var(--ribbon); }
+  .pagenav ol li a.active::after { content: "●"; opacity: 1; color: var(--ribbon); font-size: 9px; }
+
+  .cheatblock .cheathead {
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-family: 'DM Sans'; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 14px;
+  }
+
+  /* CTA inline */
+  .cta-inline {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 36px 32px; background: var(--surface); border: 1px solid var(--divider); border-radius: 10px;
+    margin-top: 8px;
+  }
+  .cta-inline h3 { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; margin: 0 0 4px; }
+  .cta-inline p { margin: 0; color: var(--ink2); font-size: 14px; }
+  .cta { display: inline-block; padding: 14px 28px; background: var(--ink); color: var(--bg); font-weight: 500; border-radius: 10px; text-decoration: none; transition: opacity .15s; white-space: nowrap; }
+  .cta:hover { opacity: 0.85; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--divider); padding: 28px 0 48px; }
+  .foot { display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: var(--ink2); }
+  .foot a { color: var(--ink2); text-decoration: none; }
+
+  @media (max-width: 1000px) {
+    .doc, .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    aside.cheat { position: static; max-height: none; }
+    .hero-meta { border-left: none; border-top: 1px solid var(--divider); padding: 16px 0 0; }
+  }
+  @media (max-width: 600px) {
+    .paths { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; gap: 4px; }
+    .cta-inline { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="./" class="wordmark" aria-label="Logbook home">Logbook<span class="ribbon"></span></a>
+    <nav class="topnav" aria-label="Primary">
+      <a class="current" href="./bring-your-program.html" aria-current="page">Bring your program</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="label">Bring your program</span>
+      <h1>Bring any program.<br>We read it.</h1>
+      <p class="dek">Import any strength training program into Logbook. Paste a PDF, dictate the block, or write it in Logbook Notation. The importer accepts all three and produces the same structured plan.</p>
+    </div>
+    <dl class="hero-meta">
+      <dt>Platform</dt>
+      <dd>iPhone · iOS 17+</dd>
+      <dt>Two paths</dt>
+      <dd>Prose or Logbook Notation</dd>
+    </dl>
+  </div>
+</section>
+
+<div class="container doc">
+  <main class="content">
+
+    <section id="two-paths">
+      <span id="paths" class="anchor"></span>
+      <h2>Two paths in.</h2>
+      <p class="muted">Logbook accepts your program in whatever form you already have it. Unstructured text goes through an interpreter; Logbook Notation is parsed deterministically.</p>
+      <div class="paths">
+        <div class="path">
+          <span class="label">Path A</span>
+          <h3>Plain prose.</h3>
+          <p>Paste a PDF, paste an email from your coach, dictate it. The importer structures the text and shows you the result before saving.</p>
+        </div>
+        <div class="path">
+          <span class="label">Path B</span>
+          <h3>Logbook Notation.</h3>
+          <p>A compact, workout-first syntax. Detected automatically by a small frontmatter block. No AI in the loop.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span id="frontmatter" class="anchor"></span>
+      <h2>Frontmatter.</h2>
+      <p>A YAML block at the top tells the importer this is Logbook Notation. Without it the source is treated as prose.</p>
+      <dl class="row"><dt><code>format: logbook</code></dt><dd>The detection key. Required · if absent the file falls back to prose interpretation.</dd></dl>
+      <dl class="row"><dt><code>version: 1</code></dt><dd>Pins the notation schema. Always write <code>1</code>.</dd></dl>
+      <dl class="row"><dt><code>name: …</code></dt><dd>The program name shown in the Programs list and on Today.</dd></dl>
+      <dl class="row"><dt><code>weeks: N</code></dt><dd>Number of Program Weeks the program rotates through. Program Weeks advance with training progression, not calendar time.</dd></dl>
+    </section>
+
+    <section>
+      <span id="workouts" class="anchor"></span>
+      <h2>Workouts and exercises.</h2>
+      <p>Each <code>##</code> heading is a workout in the rotation. Lines below it are its exercises. Identity on the left, prescription on the right, separated by <code>/</code>.</p>
+      <p><code>Squat (belt on) / 4x5 @8</code> · name, optional cue note in parentheses, then <code>sets×reps</code> and intensity. The shorthand stays the shorthand lifters already write on paper; Logbook stores it as a structured Weekly Exercise Prescription under the hood.</p>
+    </section>
+
+    <section>
+      <span id="modifiers" class="anchor"></span>
+      <h2>Intensity modifiers.</h2>
+      <p class="muted">All four are first-class. Mix and match per exercise; the importer keeps the shorthand intact and surfaces it back in the session view.</p>
+      <dl class="row"><dt><code>@8</code> &nbsp; <code>@8.5</code></dt><dd>RPE, 1&ndash;10 scale. Decimals supported.</dd></dl>
+      <dl class="row"><dt><code>RIR2</code></dt><dd>Reps in reserve. For programs written that way instead of in RPE.</dd></dl>
+      <dl class="row"><dt><code>80%</code></dt><dd>Percent of estimated 1RM. The lifter resolves the load; Logbook never auto-prescribes weights.</dd></dl>
+      <dl class="row"><dt><code>4x3-5</code></dt><dd>Four sets of three to five reps. Rep ranges are first-class.</dd></dl>
+    </section>
+
+    <section>
+      <span id="cues" class="anchor"></span>
+      <h2>Cue and variation notes.</h2>
+      <p>A short note in parentheses immediately after the exercise name attaches to that exercise. It stays visible in Today, Active Session, and the History detail. Use it for cues (<code>(belt on)</code>), variations (<code>(pause)</code>, <code>(close grip)</code>), or anything you'd write in the margin of a paper notebook.</p>
+    </section>
+
+    <section>
+      <span id="weeks" class="anchor"></span>
+      <h2>Per-week prescriptions.</h2>
+      <p class="lead">Different prescriptions across the block, same workout skeleton.</p>
+      <p>Indent prescription lines under the exercise and prefix each with a Program Week selector. A single number, a range, or omit the prefix to apply the prescription to every week.</p>
+      <p>Two deliberate rules: an exercise is either all-weeks inline <em>or</em> week-scoped, never both. And omitted weeks mean the exercise is <strong>absent</strong> in those weeks. Logbook never silently extends a prescription across weeks you didn't write.</p>
+      <blockquote class="pull">Absence is meaningful. If you didn't write Week 3, Bench Press isn't in Week 3.</blockquote>
+    </section>
+
+    <section>
+      <span id="limits" class="anchor"></span>
+      <h2>What it won't do.</h2>
+      <p>The notation is sharp because it's narrow. Two limits worth stating up front.</p>
+      <h3>Workout-first only.</h3>
+      <p class="muted">The notation optimises for the case where the same workout skeleton repeats across Program Weeks with different prescriptions. If your block has materially different workouts in different weeks, model them as separate active programs instead of one complex program.</p>
+      <blockquote class="pull">The skeleton repeats. Only the prescriptions change.</blockquote>
+      <h3>The lifter resolves the load.</h3>
+      <p class="muted">Logbook never auto-prescribes weights from RPE or percent. The numbers are the lifter's call. The notation records intent, not predictions.</p>
+      <blockquote class="pull">RPE and percent are intent, not weight. You still pick the bar.</blockquote>
+    </section>
+
+    <section style="border-bottom:none">
+      <span id="try" class="anchor"></span>
+      <div class="cta-inline">
+        <div>
+          <h3>Write your next block in fifteen lines.</h3>
+          <p>Open Logbook, tap New Program, paste the example on the right.</p>
+        </div>
+        <a href="https://apps.apple.com/br/app/logbook-strength-training-log/id6761714460" class="cta">Download Logbook</a>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="cheat">
+    <nav class="pagenav" aria-label="On this page">
+      <div class="navhead"><span>On this page</span><span class="count">7 sections</span></div>
+      <ol>
+        <li><a href="#paths">Two paths in</a></li>
+        <li><a href="#frontmatter">Frontmatter</a></li>
+        <li><a href="#workouts">Workouts and exercises</a></li>
+        <li><a href="#modifiers">Intensity modifiers</a></li>
+        <li><a href="#cues">Cue notes</a></li>
+        <li><a href="#weeks">Per-week prescriptions</a></li>
+        <li><a href="#limits">What it won't do</a></li>
+      </ol>
+    </nav>
+    <div class="cheatblock">
+      <div class="cheathead"><span>The whole notation</span><span>reference</span></div>
+      <div class="sample"><span class="c-rule">---</span>
+<span class="c-key">format:</span> logbook
+<span class="c-key">version:</span> 1
+<span class="c-key">name:</span> Peak Block
+<span class="c-key">weeks:</span> 3
+<span class="c-rule">---</span>
+
+<span class="c-section">## Workout A</span>
+Squat <span class="c-note">(belt on)</span> / 4x5 @8
+Bench Press <span class="c-note">(pause)</span>
+  <span class="c-week">W:1-2</span> / 4x3-5 @7
+  <span class="c-week">W:3</span>   / 3x3 @9
+
+<span class="c-section">## Workout B</span>
+Deadlift / 3x3 @8
+Front Squat / 4x6 RIR2
+</div>
+      <div class="legend">
+        <div><span class="swatch" style="background:var(--ink)"></span>frontmatter &amp; identifiers</div>
+        <div><span class="swatch" style="background:var(--ribbon)"></span>Program Week selector</div>
+        <div><span class="swatch" style="background:var(--ink3)"></span>rule line (<code style="background:transparent;border:none;padding:0">---</code>, <code style="background:transparent;border:none;padding:0">/</code>)</div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="container foot">
+    <a href="./" class="wordmark">Logbook<span class="ribbon"></span></a>
+    <div><a href="./privacy.html">Privacy</a> &nbsp; <a href="./terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const links = Array.from(document.querySelectorAll('.pagenav a'));
+    const map = new Map();
+    links.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) map.set(target, a);
+    });
+    if (!('IntersectionObserver' in window) || map.size === 0) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+    map.forEach((_, el) => io.observe(el));
+  })();
+</script>
+</body>
+</html>

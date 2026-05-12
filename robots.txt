@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /docs/prototypes/
+
+Sitemap: https://uselogbook.app/sitemap.xml

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Logbook — Notes from the bar</title>
+    <link>https://uselogbook.app/blog/</link>
+    <description>Strength training writing by Coach V.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2026 15:33:08 +0000</lastBuildDate>
+    <item>
+      <title>RPE without the calibration is just a guess</title>
+      <link>https://uselogbook.app/blog/rpe-without-calibration.html</link>
+      <guid isPermaLink="true">https://uselogbook.app/blog/rpe-without-calibration.html</guid>
+      <pubDate>Wed, 20 May 2026 00:00:00 +0000</pubDate>
+      <description>RPE only works when the lifter has calibrated it against their own bar. Without that, the number on the spreadsheet is a feeling pretending to be data.</description>
+    </item>
+  </channel>
+</rss>
